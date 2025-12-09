@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <!-- Start Screen -->
+    <div id="startScreen" class="screen active">
+      <div class="quiz-logo">🎯</div>
+      <h1>Quiz Master</h1>
+      <p>Test your knowledge with questions from the internet!</p>
+      
+      <div class="category-selection">
+        <h3>Select a Category:</h3>
+        <div class="categories">
+          <button class="category-btn" onclick="startQuiz('general', 'medium')">General Knowledge</button>
+          <button class="category-btn" onclick="startQuiz('science', 'medium')">Science</button>
+          <button class="category-btn" onclick="startQuiz('history', 'medium')">History</button>
+          <button class="category-btn" onclick="startQuiz('geography', 'medium')">Geography</button>
+          <button class="category-btn" onclick="startQuiz('sports', 'medium')">Sports</button>
+          <button class="category-btn" onclick="startQuiz('entertainment', 'medium')">Entertainment</button>
+        </div>
+
+        <h3 style="margin-top: 30px;">Difficulty Level:</h3>
+        <div class="categories">
+          <button class="category-btn difficulty" onclick="setDifficulty('easy')">Easy</button>
+          <button class="category-btn difficulty" onclick="setDifficulty('medium')">Medium</button>
+          <button class="category-btn difficulty" onclick="setDifficulty('hard')">Hard</button>
+        </div>
+      </div>
+
+      <div id="scoreHistory" style="margin-top: 40px; width: 100%;"></div>
+      <button class="clear-scores-btn" onclick="clearScores()" style="margin-top: 10px;">Clear Score History</button>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="screen">
+      <div style="text-align: center;">
+        <div class="spinner"></div>
+        <p>Loading questions...</p>
+      </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quizScreen" class="screen">
+      <div class="quiz-header">
+        <div class="progress">
+          <span id="questionNumber">1</span> / <span id="totalQuestions">10</span>
+        </div>
+        <div class="score">Score: <span id="score">0</span></div>
+      </div>
+
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+
+      <div class="quiz-content">
+        <h2 id="question">Question?</h2>
+        
+        <div class="options" id="options">
+          <!-- Options will be generated here -->
+        </div>
+      </div>
+
+      <button id="nextBtn" class="next-btn" onclick="nextQuestion()" disabled>Next Question</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="resultScreen" class="screen">
+      <div class="result-card">
+        <h1>Quiz Complete! 🎉</h1>
+        <div class="score-display">
+          <p class="final-score" id="finalScore">0</p>
+          <p class="score-text">out of 100</p>
+        </div>
+        
+        <div class="result-details">
+          <p id="resultMessage"></p>
+          <p id="correctAnswers"></p>
+        </div>
+
+        <button class="restart-btn" onclick="restartQuiz()">Take Another Quiz</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
